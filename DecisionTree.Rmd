@@ -1,0 +1,27 @@
+---
+title: "DecisionTree"
+author: "Xiuyang Guan"
+date: "5/3/2017"
+output: html_document
+runtime: shiny
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("DecisionTree.R")
+```
+
+
+
+```{r eruptions, echo=FALSE}
+inputPanel(
+  selectInput("output", label = "Output Variables",
+              choices = output.variables, selected = "LBW"),
+  selectInput("state", label = "States",
+              choices = states.names, selected = "New York")
+)
+
+renderPlot({
+  model.generation(input$state, output = input$output)
+})
+```

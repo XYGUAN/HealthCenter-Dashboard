@@ -1,0 +1,10 @@
+name: health_center
+title: Health Center
+account: xiuyangguan
+server: shinyapps.io
+appId: 182371
+bundleId: 835309
+url: https://xiuyangguan.shinyapps.io/health_center/
+when: 1495392623.76939
+asMultiple: FALSE
+asStatic: FALSE

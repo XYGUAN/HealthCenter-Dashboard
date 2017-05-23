@@ -1,0 +1,11 @@
+name: DecisionTree
+title:
+account: xiuyangguan
+server: shinyapps.io
+appId: 176457
+bundleId: 835306
+url: https://xiuyangguan.shinyapps.io/DecisionTree/
+when: 1495392462.69477
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: DecisionTree.Rmd
