@@ -9,8 +9,6 @@ library(gdata)
 library(caret)
 library(rpart.plot)
 library(rpart)
-path <- "~/Dropbox/Xiuyang Guan"
-data_input_path <- "~/Dropbox/Xiuyang Guan/Data files/Data/Excel files/This data yes/"
 
 #########################
 ##### Load the data #####
@@ -29,7 +27,7 @@ states.names <- c("Texas", "Connecticut", "New York", "New Jersey", "Wisconsin",
 ##############################
 
 ### Function to generate the models
-model.generation <- function(state, model = "Tree", output){
+model.generation <- function(state, model = "Tree", output, min_split, max_depth){
   if(state == "tri-state"){
     model.data <- tristate.data
     model.data <- model.data[-c(1,2,3)]
@@ -37,7 +35,7 @@ model.generation <- function(state, model = "Tree", output){
     model.data <- model.data[!names(model.data) %in% output.useless]
     if(model == "Tree"){
       formule <- paste(output, " ~.", sep = "")
-      model <- rpart(formule, data = model.data)
+      model <- rpart(formule, data = model.data, control = rpart.control(minsplit = min_split, maxdepth = max_depth))
       rpart.plot(model, main = paste("Tree model to split the", output, "in", state))
     }
     if(model == "CTree"){
@@ -54,7 +52,7 @@ model.generation <- function(state, model = "Tree", output){
     model.data <- model.data[!names(model.data) %in% output.useless]
     if(model == "Tree"){
       formule <- paste(output, " ~.", sep = "")
-      model <- rpart(formule, data = model.data)
+      model <- rpart(formule, data = model.data, control = rpart.control(minsplit = min_split))
       rpart.plot(model, main = paste("Tree model to split the", output, "in", state))
     }
     if(model == "CTree"){
